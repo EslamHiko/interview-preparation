@@ -165,6 +165,17 @@ collections.Counter(words).items() #counting the words in arr and storing it in 
 ## x[1] => for count
 ## x[0] for characters
 sorter(collections.Counter(words).items(),lambda x: (-x[1],x[0]))
+
+def getRestArr(arr1,arr2):
+    tmp = list(arr1)
+    i = j = 0;
+    while i < len(tmp) and j < len(arr2):
+        if tmp[i] == arr2[j]:
+            del tmp[i]
+            j += 1
+            continue
+        i += 1
+    return ''.join(tmp)
 '''
 Detecting :
 Typically, all the problems that require to maximize or minimize certain quantity or counting problems
