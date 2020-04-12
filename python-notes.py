@@ -176,6 +176,10 @@ def getRestArr(arr1,arr2):
             continue
         i += 1
     return ''.join(tmp)
+
+# getting the maximum key of value in dictionary
+dic = {1:5,2:10,3:-1}
+ max(dic, key=dic.get) # => 2
 '''
 Detecting :
 Typically, all the problems that require to maximize or minimize certain quantity or counting problems
