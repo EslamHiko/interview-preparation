@@ -32,3 +32,23 @@ def sol(start,end):
     return minChairs
 
 print(sol([1, 2, 6, 5, 3],[5, 5, 7, 6, 8]))
+
+# more optimized
+def sol2(start,end):
+    maxStart = max(start)
+    maxEnd = max(end)
+    maxAll = max(maxStart,maxEnd)
+    availabilitySlotsPerHour = [0]*(maxAll+2)
+    for i in range(len(start)):
+        availabilitySlotsPerHour[start[i]] += 1
+        availabilitySlotsPerHour[end[i]] -= 1
+
+    maxMinChairs = -1
+    curr = 0
+    for i in range(len(availabilitySlotsPerHour)):
+        curr += availabilitySlotsPerHour[i]
+        maxMinChairs = max(maxMinChairs,curr)
+
+    return maxMinChairs
+
+print(sol2([1, 2, 6, 5, 3],[5, 5, 7, 6, 8]))

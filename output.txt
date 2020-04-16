@@ -1,0 +1,3 @@
+Case #0: true
+Case #2: false
+Case #2: true
