@@ -195,3 +195,6 @@ DP Template:
     Recurrence:
     Order of iteration:
 '''
+
+MaxInt = float('inf')
+MinInt = float('-inf')
