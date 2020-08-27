@@ -37,18 +37,20 @@ public static int minCost(List<Integer> ropes) {
     return totalCost;
 }
 '''
+from heapq import *
 
-def sol(arr):
-    arr.sort()
-    sums = []
-    curr = 0
-    for i in range(len(arr)-1):
-        curr = arr[i]+arr[i+1]
-        arr[i+1] = curr
-        sums.append(curr)
+def sol2(arr):
+    minHeap = []
+    for el in arr:
+        heappush(minHeap,el)
 
-    return sum(sums)
+    result = 0
+    while len(minHeap) > 1:
+        temp = heappop(minHeap) + heappop(minHeap)
+        result += temp
+        heappush(minHeap,temp)
 
+    return result
 print(sol([20, 4, 8, 2]))
 print(sol([1, 2, 5, 10, 35, 89]))
 print(sol([2, 2, 3, 3]))
