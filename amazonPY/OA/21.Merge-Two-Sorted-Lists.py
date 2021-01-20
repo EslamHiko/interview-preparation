@@ -30,3 +30,53 @@ def sol(l1,l2):
         x.next = ListNode(arr1[i])
         x = x.next
     return head
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        arr = []
+        while l1:
+            arr.append(l1.val)
+            l1 = l1.next
+        while l2:
+            arr.append(l2.val)
+            l2 = l2.next
+
+        arr.sort()
+        if not len(arr):
+            return
+        head = ListNode(arr[0])
+        temp = head
+        for i in range(1,len(arr)):
+            temp.next = ListNode(arr[i])
+            temp = temp.next
+        return head
+
+# iteratively
+def mergeTwoLists1(self, l1, l2):
+    dummy = cur = ListNode(0)
+    while l1 and l2:
+        if l1.val < l2.val:
+            cur.next = l1
+            l1 = l1.next
+        else:
+            cur.next = l2
+            l2 = l2.next
+        cur = cur.next
+    cur.next = l1 or l2
+    return dummy.next
+
+# recursively
+def mergeTwoLists2(self, l1, l2):
+    if not l1 or not l2:
+        return l1 or l2
+    if l1.val < l2.val:
+        l1.next = self.mergeTwoLists(l1.next, l2)
+        return l1
+    else:
+        l2.next = self.mergeTwoLists(l1, l2.next)
+        return l2

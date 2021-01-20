@@ -166,6 +166,12 @@ collections.Counter(words).items() #counting the words in arr and storing it in 
 ## x[0] for characters
 sorter(collections.Counter(words).items(),lambda x: (-x[1],x[0]))
 
+'''
+arr1 => [1,2,3,4,5]
+arr2 => [2,5]
+restArr => [1,3,4]
+'''
+
 def getRestArr(arr1,arr2):
     tmp = list(arr1)
     i = j = 0;
@@ -176,6 +182,26 @@ def getRestArr(arr1,arr2):
             continue
         i += 1
     return ''.join(tmp)
+'''
+input: {1,2,3,4,5}
+
+subsets:
+1, 2, 3, 4, 5, {1,2},{1,3}
+k = 5
+
+count = 5
+
+{1, 4},{2,3} {1,2,4}, {1,2,3,4} {1,3,4}
+
+*/
+'''
+def subs(l):
+    if l == []:
+        return [[]]
+
+    x = subs(l[1:])
+
+    return x + [[l[0]] + y for y in x]
 
 # getting the maximum key of value in dictionary
 dic = {1:5,2:10,3:-1}

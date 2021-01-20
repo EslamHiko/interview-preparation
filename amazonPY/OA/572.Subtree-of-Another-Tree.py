@@ -62,4 +62,34 @@ def sol(s,t):
                     return traverse(s.right,t) or traverse(s.left,t)
 
 
-        return  traverse(s,t) 
+        return  traverse(s,t)
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
+
+        def checkIfTreeIsIdentical(s,t):
+            if s is None and t is None:
+                return True
+            if s is None:
+                return False
+            if t is None:
+                return False
+            if s.val != t.val:
+                return False
+            return checkIfTreeIsIdentical(s.left,t.left) and checkIfTreeIsIdentical(s.right,t.right)
+
+        def traverse(n,n2):
+            if checkIfTreeIsIdentical(n,n2):
+                return True
+            if n is not None:
+                return traverse(n.left,n2) or traverse(n.right,n2)
+            else:
+                return False
+
+        return traverse(s,t)

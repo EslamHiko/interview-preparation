@@ -12,3 +12,11 @@ Permutation is defined as the re-arranging of the elements of the set. For examp
 {3, 2, 1}
 If a set has ‘n’ distinct elements it will have n!n! permutations.
 '''
+
+def solve(arr):
+
+    def generate(arr,curr,start,end):
+        for i in range(start,end):
+            curr.append(arr[i])
+
+        
